@@ -1,0 +1,35 @@
+include $(SOPHYABASE)/include/sophyamake.inc
+#include /home/sedigheh/SObjs/include/sophyamake.inc
+
+all : atmophase
+
+clean :
+	rm Objs/*
+depend :
+	mkdir Objs
+
+atmophase : Objs/atmophase
+	echo 'make : ATMOPHASE MADE'
+
+####################
+
+Objs/atmophase : Objs/atmophase.o Objs/srout.o
+	$(CXXLINK) -o Objs/atmophase \
+	Objs/atmophase.o Objs/srout.o \
+	$(SOPHYAEXTSLBLIST)
+
+
+Objs/atmophase.o : atmophase.cc srout.h
+	$(CXXCOMPILE) -o Objs/atmophase.o  atmophase.cc
+
+
+Objs/srout.o : srout.cc srout.h
+	$(CXXCOMPILE) -o Objs/srout.o  srout.cc
+
+
+
+
+
+
+
+
